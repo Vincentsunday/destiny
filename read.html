@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read More for Each Paragraph</title>
+  <style>
+    /* Hide additional content by default */
+    .more-content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <p>Paragraph 1: This is some content that is always visible for paragraph 1.</p>
+    <p class="more-content">Additional content for paragraph 1. This is hidden initially.</p>
+    <button class="read-more-btn">Read More</button>
+  </div>
+
+  <div>
+    <p>Paragraph 2: This is some content that is always visible for paragraph 2.</p>
+    <p class="more-content">Additional content for paragraph 2. This is hidden initially.</p>
+    <button class="read-more-btn">Read More</button>
+  </div>
+
+  <div>
+    <p>Paragraph 3: This is some content that is always visible for paragraph 3.</p>
+    <p class="more-content">Additional content for paragraph 3. This is hidden initially.</p>
+    <button class="read-more-btn">Read More</button>
+  </div>
+
+  <!-- Add more paragraphs similarly -->
+
+  <script>
+    // Select all the "Read More" buttons
+    const readMoreButtons = document.querySelectorAll(".read-more-btn");
+
+    // Loop through each button to add individual functionality
+    readMoreButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        // Find the corresponding "more-content" paragraph within the same div
+        const moreContent = button.previousElementSibling;
+
+        // Toggle the visibility of the content
+        if (moreContent.style.display === "none" || moreContent.style.display === "") {
+          moreContent.style.display = "block";
+          button.textContent = "Read Less";
+        } else {
+          moreContent.style.display = "none";
+          button.textContent = "Read More";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
